@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+.cont-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7vh;
+  background: rgb(51, 28, 71);
+  line-height: 45px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.link {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}

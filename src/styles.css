@@ -5,10 +5,72 @@
   max-width: 100%;
 }
 body {
-  background: lightsteelblue;
+  background: rgb(214, 230, 127);
   height: 100vh;
-  font-family: "Twinkle Star", sans-serif;
+  font-family: "Libre Baskerville", sans-serif;
 }
 button {
-  padding: 5px 10px;
+  padding: 18px 40px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+}
+.container {
+  padding: 30px;
+}
+
+input {
+  width: 75%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  font-size: 22px;
+  text-align: center;
+}
+.search-cont {
+  text-align: center;
+}
+.weather-cont {
+  margin-top: 30px;
+}
+.location {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.date {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.temp {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 45px 25px;
+  color: #fff;
+  font-size: 100px;
+  font-weight: bold;
+  text-shadow: 3px 5px rgba(50, 50, 70, 0.5);
+  text-align: center;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.weather {
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 30px;
+  text-shadow: 3px 5px rgba(50, 50, 70, 0.5);
 }
