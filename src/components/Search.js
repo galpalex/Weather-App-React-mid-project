@@ -34,6 +34,7 @@ const Search = () => {
           }}
           className="input"
         />
+
         <button
           onClick={() => {
             getOneLocationWeather();

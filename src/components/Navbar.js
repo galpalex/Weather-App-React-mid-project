@@ -9,10 +9,10 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink className="link" to="/24Hours" exact>
-        24 Hours Weather Forecast
+        24 Hours
       </NavLink>
       <NavLink className="link" to="/5Days" exact>
-        5 Days Weather Forecast
+        5 Days
       </NavLink>
     </div>
   );

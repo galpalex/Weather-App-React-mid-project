@@ -16,6 +16,10 @@
 }
 .link {
   padding: 10px;
-  text-decoration: none;
   color: white;
 }
+/* @media only screen and (max-width:500px) {
+  .cont-navbar {
+      justify-content: center;
+  }
+} */

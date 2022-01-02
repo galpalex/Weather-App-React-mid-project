@@ -74,3 +74,16 @@ input {
   margin-top: 30px;
   text-shadow: 3px 5px rgba(50, 50, 70, 0.5);
 }
+@media only screen and (max-width: 500px) {
+  button {
+    padding: 14px 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .temp {
+    font-size: 80px;
+  }
+  input {
+    width: 95%;
+  }
+}
