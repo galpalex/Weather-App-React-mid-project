@@ -8,6 +8,8 @@ body {
   background: rgb(214, 230, 127);
   height: 100vh;
   font-family: "Libre Baskerville", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 button {
   padding: 18px 40px;
@@ -28,8 +30,10 @@ input {
   font-size: 22px;
   text-align: center;
 }
+
 .search-cont {
   text-align: center;
+  margin-bottom: 20px;
 }
 .weather-cont {
   margin-top: 30px;
