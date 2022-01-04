@@ -11,6 +11,23 @@ const Search5Days = () => {
   const [data, setData] = useState([]);
   const [term, setTerm] = useState("");
   const [fullWord, setFullWord] = useState("");
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const readCities = () => {
+      if (localStorage.getItem("cities")) {
+        setCities(JSON.parse(localStorage.getItem("cities")));
+      }
+    };
+    readCities();
+  }, []);
+
+  const onCreate = () => {
+    setFullWord(term);
+    cities.push(term);
+    localStorage.setItem("cities", JSON.stringify(cities));
+  };
+
   useEffect(() => {
     const getOneLocationWeather = async () => {
       try {
@@ -54,7 +71,7 @@ const Search5Days = () => {
 
         <button
           onClick={() => {
-            setFullWord(term);
+            onCreate();
           }}
         >
           Search

@@ -1,7 +1,8 @@
 .my-table {
   border-collapse: collapse;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.575);
+  margin-top: 20px;
 }
 td,
 th {

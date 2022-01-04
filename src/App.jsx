@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./styles.css";
 import Home from "./pages/Home";
-import Display24Hours from "./pages/Display24Hours";
+import Favorite from "./pages/Favorite";
 import Display5Days from "./pages/Display5Days";
 import Navbar from "./components/Navbar";
 
@@ -15,8 +15,8 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/24Hours">
-            <Display24Hours />
+          <Route exact path="/Favorite">
+            <Favorite />
           </Route>
           <Route exact path="/5Days">
             <Display5Days />

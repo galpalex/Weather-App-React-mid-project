@@ -8,8 +8,8 @@ const Navbar = () => {
       <NavLink className="link" to="/" exact>
         Home
       </NavLink>
-      <NavLink className="link" to="/24Hours" exact>
-        24 Hours
+      <NavLink className="link" to="/Favorite" exact>
+        My Cities
       </NavLink>
       <NavLink className="link" to="/5Days" exact>
         5 Days

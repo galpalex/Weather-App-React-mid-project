@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GetDate from "./GetDate";
 import axios from "axios";
 
@@ -10,6 +10,22 @@ const api = {
 const Search = () => {
   const [data, setData] = useState({});
   const [term, setTerm] = useState("");
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const readCities = () => {
+      if (localStorage.getItem("cities")) {
+        setCities(JSON.parse(localStorage.getItem("cities")));
+      }
+    };
+    readCities();
+  }, []);
+
+  const onCreate = () => {
+    getOneLocationWeather();
+    cities.push(term);
+    localStorage.setItem("cities", JSON.stringify(cities));
+  };
 
   const getOneLocationWeather = async () => {
     try {
@@ -37,12 +53,11 @@ const Search = () => {
 
         <button
           onClick={() => {
-            getOneLocationWeather();
+            onCreate();
           }}
         >
           Search
         </button>
-        <button>Favorite Cities</button>
       </div>
 
       {data.cod === 200 ? (
