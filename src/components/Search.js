@@ -4,10 +4,11 @@ import api from "./api";
 import axios from "axios";
 
 const Search = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [term, setTerm] = useState("");
   const [cities, setCities] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [fullWord, setFullWord] = useState("");
 
   useEffect(() => {
     const readCities = () => {
@@ -25,6 +26,7 @@ const Search = () => {
         {}
       );
       setData(data);
+
       setIsError(false);
       cities.push(term);
       localStorage.setItem("cities", JSON.stringify(cities));
@@ -32,6 +34,7 @@ const Search = () => {
       console.log("City is not found");
       setIsError(true);
     }
+    setFullWord(term);
   };
 
   return (
@@ -56,11 +59,11 @@ const Search = () => {
         </button>
       </div>
       {isError ? (
-        <div className="error"> Sorry, the city "{term}" is not found </div>
+        <div className="error"> Sorry, the city "{fullWord}" is not found </div>
       ) : (
         ""
       )}
-      {data.cod === 200 ? (
+      {data.cod === 200 && !isError ? (
         <div className="weather-cont">
           <div className="location-cont">
             <div className="location">

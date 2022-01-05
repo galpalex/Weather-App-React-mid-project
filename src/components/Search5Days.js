@@ -28,7 +28,6 @@ const Search5Days = () => {
         );
         setData(data.list);
         setIsError(false);
-
         cities.push(term);
         localStorage.setItem("cities", JSON.stringify(cities));
       } catch (error) {
@@ -39,7 +38,7 @@ const Search5Days = () => {
     if (fullWord) {
       get5DaysWeather();
     }
-  }, [fullWord]);
+  }, [fullWord]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const renderedResults = data.map((city) => {
     return (
