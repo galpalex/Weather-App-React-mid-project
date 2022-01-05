@@ -5,12 +5,10 @@
   max-width: 100%;
 }
 body {
-  /* background: rgb(214, 230, 127); */
   background-image: url(./assets/images/sky.jpg);
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
-  /* height: 100vh; */
   font-family: "Libre Baskerville", sans-serif;
   max-width: 100%;
   overflow-x: hidden;
@@ -94,14 +92,26 @@ button {
 }
 @media only screen and (max-width: 500px) {
   button {
-    padding: 14px 40px;
+    padding: 3px 3px;
     margin-top: 20px;
     margin-left: 10px;
+  }
+  .search {
+    background-image: none;
+  }
+  .search-magnifier {
+    padding: 3px 6px;
+  }
+  .input {
+    width: 67vw;
   }
   .temp {
     font-size: 80px;
   }
-  input {
-    width: 95%;
+  .mobile-input {
+    width: 100%;
+  }
+  .mobile-add {
+    width: 90vw;
   }
 }

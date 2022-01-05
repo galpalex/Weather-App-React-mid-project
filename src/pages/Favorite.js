@@ -46,7 +46,7 @@ const Favorite = () => {
           </td>
           <td data-label="Delete">
             {" "}
-            <button onClick={() => onDelete(city)}>
+            <button className="mobile" onClick={() => onDelete(city)}>
               <span className="search-magnifier" aria-label="trash" role="img">
                 🗑️
               </span>
@@ -54,12 +54,12 @@ const Favorite = () => {
           </td>
           <td data-label="Update">
             <input
-              className="input"
+              className="input mobile-input"
               placeholder="Update the city"
               type="text"
               onChange={(e) => setUpdateCity(e.target.value)}
             />
-            <button onClick={() => onUpdate(city)}>
+            <button className="mobile" onClick={() => onUpdate(city)}>
               <span className="search-magnifier" aria-label="floppy" role="img">
                 💾
               </span>
@@ -80,7 +80,7 @@ const Favorite = () => {
           onChange={(e) => setNewCity(e.target.value)}
         />
 
-        <button onClick={onCreate}>
+        <button className="mobile" onClick={onCreate}>
           {" "}
           <span className="search-magnifier" aria-label="plus" role="img">
             ➕

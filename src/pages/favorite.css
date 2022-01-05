@@ -8,3 +8,8 @@
 .city {
   font-size: 1.8rem;
 }
+@media only screen and (max-width: 500px) {
+  .add-city-input {
+    width: 80%;
+  }
+}
