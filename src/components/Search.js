@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import GetDate from "./GetDate";
+import api from "./api";
 import axios from "axios";
-
-const api = {
-  key: "fbb5a29cf4c67bb8ccfba0781293e5d7",
-  base: "https://api.openweathermap.org/data/2.5/",
-};
 
 const Search = () => {
   const [data, setData] = useState({});
   const [term, setTerm] = useState("");
   const [cities, setCities] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const readCities = () => {
@@ -21,12 +18,6 @@ const Search = () => {
     readCities();
   }, []);
 
-  const onCreate = () => {
-    getOneLocationWeather();
-    cities.push(term);
-    localStorage.setItem("cities", JSON.stringify(cities));
-  };
-
   const getOneLocationWeather = async () => {
     try {
       const { data } = await axios.get(
@@ -34,8 +25,12 @@ const Search = () => {
         {}
       );
       setData(data);
+      setIsError(false);
+      cities.push(term);
+      localStorage.setItem("cities", JSON.stringify(cities));
     } catch (error) {
-      console.log("Got Error");
+      console.log("City is not found");
+      setIsError(true);
     }
   };
 
@@ -43,23 +38,28 @@ const Search = () => {
     <div className="container">
       <div className="search-cont">
         <input
-          placeholder="Enter City Name"
+          className="input search"
+          placeholder="Enter CITY and get today weather forecast"
           value={term}
           onChange={(e) => {
             setTerm(e.target.value);
           }}
-          className="input"
         />
-
         <button
           onClick={() => {
-            onCreate();
+            getOneLocationWeather();
           }}
         >
-          Search
+          <span className="search-magnifier" aria-label="magnifier" role="img">
+            🔍
+          </span>
         </button>
       </div>
-
+      {isError ? (
+        <div className="error"> Sorry, the city "{term}" is not found </div>
+      ) : (
+        ""
+      )}
       {data.cod === 200 ? (
         <div className="weather-cont">
           <div className="location-cont">

@@ -1,7 +1,7 @@
 .my-table {
   border-collapse: collapse;
   width: 100%;
-  background: rgba(255, 255, 255, 0.575);
+  background: rgba(255, 255, 255, 0.836);
   margin-top: 20px;
 }
 td,
@@ -9,4 +9,8 @@ th {
   border: 1px solid #999;
   padding: 0.5rem;
   text-align: left;
+}
+.error {
+  text-align: center;
+  font-size: 2rem;
 }

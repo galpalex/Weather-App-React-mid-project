@@ -9,7 +9,11 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink className="link" to="/Favorite" exact>
-        My Cities
+        My
+        <span className="red" aria-label="heart" role="img">
+          ❤️
+        </span>
+        Cities
       </NavLink>
       <NavLink className="link" to="/5Days" exact>
         5 Days

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Search5Days from "../components/Search5Days";
 
 const Display5Days = () => {

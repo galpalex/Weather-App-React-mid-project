@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./favorite.css";
 
-const Favorite = ({}) => {
+const Favorite = () => {
   const [cities, setCities] = useState([]);
   const [newCity, setNewCity] = useState("");
   const [updateCity, setUpdateCity] = useState("");
@@ -13,7 +13,7 @@ const Favorite = ({}) => {
       }
     };
     readCities();
-  }, [cities]);
+  }, []);
 
   const onCreate = () => {
     cities.push(newCity);
@@ -28,6 +28,7 @@ const Favorite = ({}) => {
     setNewCity("");
     setCities(JSON.parse(localStorage.getItem("cities")));
   };
+
   const onUpdate = (city) => {
     const index = cities.indexOf(city);
     const citiesUpdated = JSON.parse(localStorage.getItem("cities"));
@@ -36,27 +37,36 @@ const Favorite = ({}) => {
     setCities(JSON.parse(localStorage.getItem("cities")));
   };
 
-  const renderedResults = cities.map((city) => {
+  const renderedResults = cities.map((city, index) => {
     return (
-      <tr key={city}>
-        <td data-label="Date">{city}</td>
-        <td data-label="Temp">
-          {" "}
-          <button onClick={() => onDelete(city)}>
-            <span aria-label="trash" role="img">
-              🗑️
-            </span>
-          </button>
-        </td>
-        <td data-label="Weather">
-          <input type="text" onChange={(e) => setUpdateCity(e.target.value)} />
-          <button onClick={() => onUpdate(city)}>
-            <span aria-label="floppy" role="img">
-              💾
-            </span>
-          </button>
-        </td>
-      </tr>
+      <React.Fragment key={index}>
+        <tr>
+          <td data-label="City" className="city">
+            {city}
+          </td>
+          <td data-label="Delete">
+            {" "}
+            <button onClick={() => onDelete(city)}>
+              <span className="search-magnifier" aria-label="trash" role="img">
+                🗑️
+              </span>
+            </button>
+          </td>
+          <td data-label="Update">
+            <input
+              className="input"
+              placeholder="Update the city"
+              type="text"
+              onChange={(e) => setUpdateCity(e.target.value)}
+            />
+            <button onClick={() => onUpdate(city)}>
+              <span className="search-magnifier" aria-label="floppy" role="img">
+                💾
+              </span>
+            </button>
+          </td>
+        </tr>
+      </React.Fragment>
     );
   });
 
@@ -64,7 +74,7 @@ const Favorite = ({}) => {
     <div>
       <div className="add-city-cont">
         <input
-          className="add-city-input"
+          className="add-city-input input"
           type="text"
           placeholder="Add new city"
           onChange={(e) => setNewCity(e.target.value)}
@@ -72,23 +82,25 @@ const Favorite = ({}) => {
 
         <button onClick={onCreate}>
           {" "}
-          <span aria-label="plus" role="img">
+          <span className="search-magnifier" aria-label="plus" role="img">
             ➕
           </span>
         </button>
       </div>
-      <div>
-        <table class="my-table">
-          <thead>
-            <tr>
-              <th>City</th>
-              <th>Delete City</th>
-              <th>Update City</th>
-            </tr>
-          </thead>
-          <tbody>{renderedResults}</tbody>
-        </table>
-      </div>
+      {cities.length > 0 && (
+        <div>
+          <table className="my-table">
+            <thead>
+              <tr>
+                <th>City</th>
+                <th>Delete City</th>
+                <th>Update City</th>
+              </tr>
+            </thead>
+            <tbody>{renderedResults}</tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./search5Days.css";
+import api from "./api";
 import axios from "axios";
-
-const api = {
-  key: "fbb5a29cf4c67bb8ccfba0781293e5d7",
-  base: "https://api.openweathermap.org/data/2.5/",
-};
 
 const Search5Days = () => {
   const [data, setData] = useState([]);
   const [term, setTerm] = useState("");
   const [fullWord, setFullWord] = useState("");
   const [cities, setCities] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const readCities = () => {
@@ -22,27 +19,25 @@ const Search5Days = () => {
     readCities();
   }, []);
 
-  const onCreate = () => {
-    setFullWord(term);
-    cities.push(term);
-    localStorage.setItem("cities", JSON.stringify(cities));
-  };
-
   useEffect(() => {
-    const getOneLocationWeather = async () => {
+    const get5DaysWeather = async () => {
       try {
         const { data } = await axios.get(
           `${api.base}forecast?q=${fullWord}&units=metric&APPID=${api.key}`,
           {}
         );
         setData(data.list);
-        console.log(data.list);
+        setIsError(false);
+
+        cities.push(term);
+        localStorage.setItem("cities", JSON.stringify(cities));
       } catch (error) {
-        console.log("Got Error");
+        console.log("City is not found");
+        setIsError(true);
       }
     };
     if (fullWord) {
-      getOneLocationWeather();
+      get5DaysWeather();
     }
   }, [fullWord]);
 
@@ -61,36 +56,43 @@ const Search5Days = () => {
     <div className="container">
       <div className="search-cont">
         <input
-          placeholder="Enter City Name"
+          placeholder="Enter CITY and get 5 days weather forecast"
           value={term}
           onChange={(e) => {
             setTerm(e.target.value);
           }}
-          className="input"
+          className="input search"
         />
 
         <button
           onClick={() => {
-            onCreate();
+            setFullWord(term);
           }}
         >
-          Search
+          <span className="search-magnifier" aria-label="magnifier" role="img">
+            🔍
+          </span>
         </button>
       </div>
-
-      <div>
-        <table class="my-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Temp</th>
-              <th>Weather</th>
-              <th>Humidity</th>
-            </tr>
-          </thead>
-          <tbody>{renderedResults}</tbody>
-        </table>
-      </div>
+      {isError ? (
+        <div className="error">Sorry, the city "{fullWord}" is not found</div>
+      ) : (
+        <div>
+          {data.length > 0 && (
+            <table className="my-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Temp</th>
+                  <th>Weather</th>
+                  <th>Humidity</th>
+                </tr>
+              </thead>
+              <tbody>{renderedResults}</tbody>
+            </table>
+          )}
+        </div>
+      )}
     </div>
   );
 };
