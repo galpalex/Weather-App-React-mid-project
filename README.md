@@ -23,13 +23,14 @@
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
+- [Installing](#installing)
 
 - [Built Using](#built_using)
 
 ## 🧐 About <a name = "about"></a>
 
 The purpose of the project to get weather forecast for one day, 5 days and be able to store favorite cities.
+In the project I used hooks, localStorage to store favorite cities, CRUD - to edit cities, API to get real weather data.
 
 Demo https://weather-app-galpalex.netlify.app/
 
